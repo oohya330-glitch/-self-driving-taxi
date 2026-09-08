@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>學測英文作文｜無人駕駛計程車互動練習</title>
+<style>
+:root{
+  --bg:#f6f7fb;
+  --card:#ffffff;
+  --text:#222;
+  --muted:#666;
+  --line:#e4e7ee;
+  --accent:#2f5da8;
+  --soft:#eef4ff;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft JhengHei",sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.75;
+}
+.wrap{max-width:860px;margin:auto;padding:24px 16px 56px}
+.hero{
+  background:linear-gradient(135deg,#ffffff,#eef4ff);
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:24px;
+  margin-bottom:18px;
+}
+h1{font-size:28px;margin:0 0 8px}
+h2{font-size:21px;margin:0 0 12px}
+h3{font-size:17px;margin:0 0 8px}
+.card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:20px;
+  margin:14px 0;
+  box-shadow:0 3px 12px rgba(0,0,0,.04);
+}
+.small{color:var(--muted);font-size:14px}
+.tag{
+  display:inline-block;
+  padding:4px 9px;
+  border-radius:999px;
+  background:var(--soft);
+  color:var(--accent);
+  font-size:13px;
+  margin:3px 4px 3px 0;
+}
+button{
+  appearance:none;border:1px solid #cfd6e4;background:#fff;
+  padding:10px 14px;border-radius:10px;font-size:15px;
+  cursor:pointer;margin:4px 6px 4px 0;
+}
+button:hover{background:#f8faff}
+button.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+.answer,.detail{
+  display:none;
+  margin-top:10px;
+  padding:12px 14px;
+  background:#fafbfe;
+  border-left:4px solid var(--accent);
+  border-radius:8px;
+}
+.choice.selected{background:var(--soft);border-color:#9db7df}
+input[type=text], textarea{
+  width:100%;
+  border:1px solid #cfd6e4;
+  border-radius:10px;
+  padding:12px;
+  font-size:16px;
+  font-family:inherit;
+  margin:8px 0;
+}
+textarea{min-height:96px;resize:vertical}
+.en{font-weight:600}
+.zh{color:#555}
+hr{border:0;border-top:1px solid var(--line);margin:18px 0}
+.quiz-option{
+  display:block;width:100%;text-align:left;margin:8px 0;
+}
+.feedback{font-weight:600;margin-top:8px}
+.good{color:#247a3b}.bad{color:#b33a3a}
+details{
+  background:#fafbfe;border:1px solid var(--line);
+  border-radius:10px;padding:10px 12px;margin:8px 0
+}
+summary{cursor:pointer;font-weight:600}
+.reveal{background:#fafbfe;border:1px solid #cfd6e4;border-radius:10px;padding:10px 14px;margin-top:8px}
+.reveal > summary{list-style:none;background:var(--accent);color:#fff;border-radius:10px;padding:10px 14px;display:inline-block}
+.reveal > summary::-webkit-details-marker{display:none}
+.reveal[open] > summary{margin-bottom:10px}
+.reveal .reveal-body{padding:12px 14px;border-left:4px solid var(--accent);background:#fafbfe;border-radius:8px}
+.footer{color:#777;font-size:13px;text-align:center;margin-top:24px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <section class="hero">
+    <div class="tag">學測英文作文</div>
+    <div class="tag">科技 × 交通</div>
+    <h1>🚕 無人駕駛計程車｜互動練習</h1>
+    <p class="small">建議先自己想，再點開提示與範文。</p>
+  </section>
+
+  <section class="card">
+    <h2>① 模擬題目</h2>
+    <p>隨著人工智慧與自動駕駛技術的發展，無人駕駛計程車（self-driving taxis）已開始在部分城市提供載客服務。假設未來你居住的城市也開始提供這項服務，請寫一篇英文作文，文分兩段。</p>
+    <p><b>第一段：</b>說明你是否願意搭乘無人駕駛計程車，並說明理由。</p>
+    <p><b>第二段：</b>說明你認為無人駕駛計程車普及後，可能為人們的生活或社會帶來哪些改變，並說明你的看法。</p>
+  </section>
+
+  <section class="card">
+    <h2>② 你會搭乘嗎？</h2>
+    <button class="choice" onclick="pick(this)">Yes, I would.</button>
+    <button class="choice" onclick="pick(this)">No, I wouldn't.</button>
+    <p class="small">先選立場，再想 2 個理由。</p>
+    <textarea placeholder="寫下你的理由，例如：便利、安全、科技可靠性……"></textarea>
+  </section>
+
+  <section class="card">
+    <h2>③ 理由素材卡</h2>
+
+    <details>
+      <summary>交通便利｜make transportation more convenient</summary>
+      <p class="en">They could still provide rides when few human drivers are available, especially late at night or during busy hours.</p>
+      <p class="zh">即使可提供服務的人類駕駛不多，尤其是在深夜或尖峰時段，無人駕駛計程車仍能提供載客服務。</p>
+    </details>
+
+    <details>
+      <summary>交通安全｜reduce accidents caused by human error</summary>
+      <p class="en">For example, automated driving systems do not get tired or lose focus behind the wheel.</p>
+      <p class="zh">例如，自動駕駛系統不會因疲勞而在駕駛時失去專注力。</p>
+    </details>
+
+    <details>
+      <summary>提升行動自主性｜travel more independently</summary>
+      <p class="en">Elderly people and people with limited mobility would no longer need to depend entirely on family members for transportation.</p>
+      <p class="zh">年長者與行動不便者將不必再完全依賴家人接送。</p>
+    </details>
+
+    <details>
+      <summary>科技依賴｜greater dependence on self-driving systems</summary>
+      <p class="en">If the system suddenly failed, passengers might have difficulty dealing with the situation on their own.</p>
+      <p class="zh">如果系統突然故障，乘客可能難以自行處理當下的狀況。</p>
+    </details>
+
+    <details>
+      <summary>駕駛工作｜impact on professional drivers</summary>
+      <p class="en">For instance, taxi drivers may have fewer job opportunities if more passengers choose driverless services.</p>
+      <p class="zh">例如，如果更多乘客選擇無人駕駛服務，計程車司機可能會面臨較少的工作機會。</p>
+    </details>
+  </section>
+
+  <section class="card">
+    <h2>④ 第一段骨架填空</h2>
+    <p class="en">As technology continues to develop, self-driving taxis may soon become part of our daily lives.</p>
+    <input type="text" placeholder="If this service became available in my city, I would...">
+    <input type="text" placeholder="There are several reasons why...">
+    <input type="text" placeholder="One reason is that...">
+    <input type="text" placeholder="Another reason is that...">
+    <details class="reveal">
+      <summary>查看參考寫法</summary>
+      <div class="reveal-body">
+        <p class="en">If this service became available in my city, I would be willing to give it a try.</p>
+        <p class="en">There are several reasons why I would choose this service.</p>
+        <p class="en">One reason is that self-driving taxis could make transportation more convenient.</p>
+        <p class="en">Another reason is that they may reduce accidents caused by human error.</p>
+      </div>
+    </details>
+  </section>
+
+  <section class="card">
+    <h2>⑤ However 轉折練習</h2>
+    <p>哪一句最適合接在正面影響後，作為轉折？</p>
+    <button class="quiz-option" onclick="checkQuiz(this,false)">A. However, self-driving taxis are very modern.</button>
+    <button class="quiz-option" onclick="checkQuiz(this,true)">B. However, greater dependence on self-driving systems may also cause problems.</button>
+    <button class="quiz-option" onclick="checkQuiz(this,false)">C. However, transportation is important in modern life.</button>
+    <div id="qfb" class="feedback"></div>
+  </section>
+
+  <section class="card">
+    <h2>⑥ 第二段骨架</h2>
+    <p class="en">The widespread use of self-driving taxis could change the way people travel.</p>
+    <textarea placeholder="正面影響：One important change is that..."></textarea>
+    <textarea placeholder="轉折：However, ..."></textarea>
+    <textarea placeholder="另一項影響：Another possible concern is..."></textarea>
+    <textarea placeholder="個人觀點：In my opinion, ..."></textarea>
+    <details class="reveal">
+      <summary>查看參考寫法</summary>
+      <div class="reveal-body">
+        <p class="en">One important change is that elderly people and people with limited mobility may be able to travel more independently.</p>
+        <p class="en">They would no longer need to depend entirely on family members for transportation.</p>
+        <p class="en">However, greater dependence on self-driving systems may also cause problems.</p>
+        <p class="en">If the system suddenly failed, passengers might have difficulty dealing with the situation on their own.</p>
+        <p class="en">Another possible concern is the impact on professional drivers.</p>
+        <p class="en">For instance, taxi drivers may have fewer job opportunities if more passengers choose driverless services.</p>
+        <p class="en">In my opinion, self-driving taxis could bring many benefits, but safety should always come first.</p>
+      </div>
+    </details>
+  </section>
+
+  <section class="card">
+    <h2>⑦ 可移植語塊</h2>
+    <details><summary>reduce accidents caused by human error</summary><p>減少人為疏失造成的事故</p></details>
+    <details><summary>travel more independently</summary><p>更獨立地出行</p></details>
+    <details><summary>have fewer job opportunities</summary><p>工作機會減少</p></details>
+    <details><summary>deal with the situation on one’s own</summary><p>自行處理狀況</p></details>
+    <details><summary>safety should always come first</summary><p>安全永遠應該擺在第一位</p></details>
+    <p class="small">這些語塊也能移植到 AI、智慧科技、交通安全、工作改變等題目。</p>
+  </section>
+
+  <section class="card">
+    <h2>⑧ 完整參考範文</h2>
+    <p class="small">建議完成自己的骨架後再查看。</p>
+    <details class="reveal">
+      <summary>查看完整範文</summary>
+      <div class="reveal-body">
+        <p>As technology continues to develop, self-driving taxis may soon become part of our daily lives. If this service became available in my city, I would be willing to give it a try. There are several reasons why I would choose this service. One reason is that self-driving taxis could make transportation more convenient. They could still provide rides when few human drivers are available, especially late at night or during busy hours. Another reason is that they may reduce accidents caused by human error. For example, automated driving systems do not get tired or lose focus behind the wheel.</p>
+        <p>The widespread use of self-driving taxis could change the way people travel. One important change is that elderly people and people with limited mobility may be able to travel more independently. They would no longer need to depend entirely on family members for transportation. However, greater dependence on self-driving systems may also cause problems. If the system suddenly failed, passengers might have difficulty dealing with the situation on their own. Another possible concern is the impact on professional drivers. For instance, taxi drivers may have fewer job opportunities if more passengers choose driverless services. In my opinion, self-driving taxis could bring many benefits, but safety should always come first.</p>
+      </div>
+    </details>
+  </section>
+
+  <div class="footer">可直接離線開啟，不需登入、不需部署。</div>
+</div>
+
+<script>
+function pick(btn){
+  document.querySelectorAll('.choice').forEach(x=>x.classList.remove('selected'));
+  btn.classList.add('selected');
+}
+function checkQuiz(btn,ok){
+  document.querySelectorAll('.quiz-option').forEach(x=>x.disabled=true);
+  const fb=document.getElementById('qfb');
+  if(ok){fb.textContent='答對了。However 後面要接與前文形成對比或轉折的內容。';fb.className='feedback good';}
+  else{fb.textContent='再想想：However 後面應該出現與前面正面影響形成對比的內容。';fb.className='feedback bad';}
+}
+</script>
+</body>
+</html>
