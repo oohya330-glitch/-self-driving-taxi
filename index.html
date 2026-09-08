@@ -80,11 +80,20 @@ textarea{min-height:96px;resize:vertical}
 .en{font-weight:600}
 .zh{color:#555}
 hr{border:0;border-top:1px solid var(--line);margin:18px 0}
+.quiz-wrap{margin-top:8px}
+.quiz-wrap input[type=radio]{position:absolute;opacity:0;pointer-events:none}
 .quiz-option{
   display:block;width:100%;text-align:left;margin:8px 0;
+  border:1px solid #cfd6e4;background:#fff;padding:11px 14px;
+  border-radius:10px;cursor:pointer;font-size:15px;
 }
-.feedback{font-weight:600;margin-top:8px}
-.good{color:#247a3b}.bad{color:#b33a3a}
+.quiz-wrap input[type=radio]:checked + .quiz-option{
+  background:var(--soft);border-color:#9db7df;
+}
+.feedback{display:none;font-weight:600;margin:8px 0 14px;padding:10px 12px;border-radius:8px}
+.feedback.good{color:#247a3b;background:#f1fbf4;border:1px solid #bfe4c8}
+.feedback.bad{color:#9a2f2f;background:#fff5f5;border:1px solid #edc5c5}
+#qA:checked ~ .fb-a, #qB:checked ~ .fb-b, #qC:checked ~ .fb-c{display:block}
 details{
   background:#fafbfe;border:1px solid var(--line);
   border-radius:10px;padding:10px 12px;margin:8px 0
@@ -178,10 +187,20 @@ summary{cursor:pointer;font-weight:600}
   <section class="card">
     <h2>⑤ However 轉折練習</h2>
     <p>哪一句最適合接在正面影響後，作為轉折？</p>
-    <button class="quiz-option" onclick="checkQuiz(this,false)">A. However, self-driving taxis are very modern.</button>
-    <button class="quiz-option" onclick="checkQuiz(this,true)">B. However, greater dependence on self-driving systems may also cause problems.</button>
-    <button class="quiz-option" onclick="checkQuiz(this,false)">C. However, transportation is important in modern life.</button>
-    <div id="qfb" class="feedback"></div>
+    <p class="small">點選後會看到說明；答錯也可以重新選其他答案。</p>
+    <div class="quiz-wrap">
+      <input type="radio" name="however" id="qA">
+      <label class="quiz-option" for="qA">A. However, self-driving taxis are very modern.</label>
+      <div class="feedback bad fb-a">再想想。這句只是說「無人駕駛計程車很現代」，沒有和前面的正面影響形成真正的轉折。However 後面應該接相反面、限制或可能的問題。你可以再選一次。</div>
+
+      <input type="radio" name="however" id="qB">
+      <label class="quiz-option" for="qB">B. However, greater dependence on self-driving systems may also cause problems.</label>
+      <div class="feedback good fb-b">答對了。前文談的是正面影響，這句轉而提出「更依賴自動駕駛系統也可能帶來問題」，和前文形成清楚的對比與轉折。</div>
+
+      <input type="radio" name="however" id="qC">
+      <label class="quiz-option" for="qC">C. However, transportation is important in modern life.</label>
+      <div class="feedback bad fb-c">再想想。這句雖然文法正確，但只是一般性的敘述，沒有和前面的正面影響形成對比，因此不適合作為 However 後面的轉折內容。你可以再選一次。</div>
+    </div>
   </section>
 
   <section class="card">
@@ -234,12 +253,6 @@ summary{cursor:pointer;font-weight:600}
 function pick(btn){
   document.querySelectorAll('.choice').forEach(x=>x.classList.remove('selected'));
   btn.classList.add('selected');
-}
-function checkQuiz(btn,ok){
-  document.querySelectorAll('.quiz-option').forEach(x=>x.disabled=true);
-  const fb=document.getElementById('qfb');
-  if(ok){fb.textContent='答對了。However 後面要接與前文形成對比或轉折的內容。';fb.className='feedback good';}
-  else{fb.textContent='再想想：However 後面應該出現與前面正面影響形成對比的內容。';fb.className='feedback bad';}
 }
 </script>
 </body>
