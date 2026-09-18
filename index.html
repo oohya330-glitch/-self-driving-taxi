@@ -6,23 +6,24 @@
 <title>學測英文作文｜無人駕駛計程車互動練習</title>
 <style>
 :root{
-  --bg:#f6f7fb;
+  --bg:#eef2f6;
   --card:#ffffff;
-  --text:#222;
-  --muted:#666;
-  --line:#e4e7ee;
+  --text:#17202b;
+  --muted:#4f5965;
+  --line:#d6dce6;
   --accent:#2f5da8;
   --soft:#eef4ff;
 }
 *{box-sizing:border-box}
 body{
   margin:0;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft JhengHei",sans-serif;
+  font-family:"Microsoft YaHei","PingFang TC","Noto Sans TC",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
   background:var(--bg);
   color:var(--text);
-  line-height:1.75;
+  line-height:1.8;
+  font-size:clamp(19px, 1.15vw + 14px, 21px);
 }
-.wrap{max-width:860px;margin:auto;padding:24px 16px 56px}
+.wrap{max-width:900px;margin:auto;padding:28px 18px 60px}
 .hero{
   background:linear-gradient(135deg,#ffffff,#eef4ff);
   border:1px solid var(--line);
@@ -30,30 +31,30 @@ body{
   padding:24px;
   margin-bottom:18px;
 }
-h1{font-size:28px;margin:0 0 8px}
-h2{font-size:21px;margin:0 0 12px}
-h3{font-size:17px;margin:0 0 8px}
+h1{font-size:clamp(34px,4.4vw,42px);line-height:1.25;margin:0 0 12px;font-weight:800;letter-spacing:.01em}
+h2{font-size:clamp(26px,3vw,30px);line-height:1.35;margin:0 0 16px;font-weight:800}
+h3{font-size:21px;margin:0 0 10px;font-weight:750}
 .card{
   background:var(--card);
   border:1px solid var(--line);
   border-radius:16px;
-  padding:20px;
+  padding:22px;
   margin:14px 0;
-  box-shadow:0 3px 12px rgba(0,0,0,.04);
+  box-shadow:0 4px 16px rgba(0,0,0,.07);
 }
-.small{color:var(--muted);font-size:14px}
+.small{color:#46515e;font-size:clamp(17px,1.2vw,18px);font-weight:550}
 .tag{
   display:inline-block;
   padding:4px 9px;
   border-radius:999px;
   background:var(--soft);
   color:var(--accent);
-  font-size:13px;
+  font-size:15.5px;
   margin:3px 4px 3px 0;
 }
 button{
   appearance:none;border:1px solid #cfd6e4;background:#fff;
-  padding:10px 14px;border-radius:10px;font-size:15px;
+  padding:13px 17px;border-radius:11px;font-size:clamp(24px,2vw,28px);font-weight:800;line-height:1.45;
   cursor:pointer;margin:4px 6px 4px 0;
 }
 button:hover{background:#f8faff}
@@ -66,31 +67,36 @@ button.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
   border-left:4px solid var(--accent);
   border-radius:8px;
 }
+.choice{font-size:clamp(24px,2vw,28px);font-weight:800;line-height:1.45;padding:15px 20px}
 .choice.selected{background:var(--soft);border-color:#9db7df}
 input[type=text], textarea{
   width:100%;
   border:1px solid #cfd6e4;
   border-radius:10px;
   padding:12px;
-  font-size:16px;
+  font-size:18px;
   font-family:inherit;
   margin:8px 0;
 }
 textarea{min-height:96px;resize:vertical}
-.en{font-weight:600}
-.zh{color:#555}
+.en{font-weight:750;font-size:clamp(20px,1.5vw,22px);line-height:1.8;color:#111827}
+.skeleton-lead{font-size:clamp(24px,2vw,28px);font-weight:800;line-height:1.65;color:#0f172a;letter-spacing:.01em}
+.prompt-text{font-size:clamp(20px,1.55vw,23px);font-weight:700;line-height:1.85;color:#172033}
+.question-lead{font-size:clamp(24px,2vw,28px);font-weight:800;line-height:1.65;color:#0f172a;letter-spacing:.01em}
+.choice-instruction{font-size:clamp(21px,1.6vw,24px);font-weight:750;line-height:1.7;color:#263241}
+.zh{color:#3f4650}
 hr{border:0;border-top:1px solid var(--line);margin:18px 0}
 .quiz-wrap{margin-top:8px}
 .quiz-wrap input[type=radio]{position:absolute;opacity:0;pointer-events:none}
 .quiz-option{
   display:block;width:100%;text-align:left;margin:8px 0;
-  border:1px solid #cfd6e4;background:#fff;padding:11px 14px;
-  border-radius:10px;cursor:pointer;font-size:15px;
+  border:1px solid #c2cad6;background:#fff;padding:13px 15px;
+  border-radius:11px;cursor:pointer;font-size:clamp(24px,2vw,28px);font-weight:800;line-height:1.55;
 }
 .quiz-wrap input[type=radio]:checked + .quiz-option{
   background:var(--soft);border-color:#9db7df;
 }
-.feedback{display:none;font-weight:600;margin:8px 0 14px;padding:10px 12px;border-radius:8px}
+.feedback{display:none;font-weight:650;margin:10px 0 16px;padding:13px 15px;border-radius:9px;font-size:clamp(17px,1.1vw,18px);line-height:1.7}
 .feedback.good{color:#247a3b;background:#f1fbf4;border:1px solid #bfe4c8}
 .feedback.bad{color:#9a2f2f;background:#fff5f5;border:1px solid #edc5c5}
 #qA:checked ~ .fb-a, #qB:checked ~ .fb-b, #qC:checked ~ .fb-c{display:block}
@@ -98,13 +104,21 @@ details{
   background:#fafbfe;border:1px solid var(--line);
   border-radius:10px;padding:10px 12px;margin:8px 0
 }
-summary{cursor:pointer;font-weight:600}
+summary{cursor:pointer;font-weight:800;font-size:clamp(24px,2vw,28px);line-height:1.55}
 .reveal{background:#fafbfe;border:1px solid #cfd6e4;border-radius:10px;padding:10px 14px;margin-top:8px}
-.reveal > summary{list-style:none;background:var(--accent);color:#fff;border-radius:10px;padding:10px 14px;display:inline-block}
+.reveal > summary{list-style:none;background:var(--accent);color:#fff;border-radius:10px;padding:12px 17px;display:inline-block;font-size:clamp(24px,2vw,28px);font-weight:800;line-height:1.45}
 .reveal > summary::-webkit-details-marker{display:none}
 .reveal[open] > summary{margin-bottom:10px}
 .reveal .reveal-body{padding:12px 14px;border-left:4px solid var(--accent);background:#fafbfe;border-radius:8px}
-.footer{color:#777;font-size:13px;text-align:center;margin-top:24px}
+.footer{color:#5f6772;font-size:15px;text-align:center;margin-top:26px}
+
+@media (max-width: 640px){
+  .wrap{padding:18px 12px 44px}
+  .hero{padding:20px 18px}
+  .card{padding:18px 16px;margin:12px 0}
+  button,.quiz-option{min-height:48px}
+  input[type=text], textarea{padding:13px 12px}
+}
 </style>
 </head>
 <body>
@@ -119,16 +133,16 @@ summary{cursor:pointer;font-weight:600}
 
   <section class="card">
     <h2>① 模擬題目</h2>
-    <p>隨著人工智慧與自動駕駛技術的發展，無人駕駛計程車（self-driving taxis）已開始在部分城市提供載客服務。假設未來你居住的城市也開始提供這項服務，請寫一篇英文作文，文分兩段。</p>
-    <p><b>第一段：</b>說明你是否願意搭乘無人駕駛計程車，並說明理由。</p>
-    <p><b>第二段：</b>說明你認為無人駕駛計程車普及後，可能為人們的生活或社會帶來哪些改變，並說明你的看法。</p>
+    <p class="prompt-text">隨著人工智慧與自動駕駛技術的發展，無人駕駛計程車（self-driving taxis）已開始在部分城市提供載客服務。假設未來你居住的城市也開始提供這項服務，請寫一篇英文作文，文分兩段。</p>
+    <p class="prompt-text"><b>第一段：</b>說明你是否願意搭乘無人駕駛計程車，並說明理由。</p>
+    <p class="prompt-text"><b>第二段：</b>說明你認為無人駕駛計程車普及後，可能為人們的生活或社會帶來哪些改變，並說明你的看法。</p>
   </section>
 
   <section class="card">
     <h2>② 你會搭乘嗎？</h2>
     <button class="choice" onclick="pick(this)">Yes, I would.</button>
     <button class="choice" onclick="pick(this)">No, I wouldn't.</button>
-    <p class="small">先選立場，再想 2 個理由。</p>
+    <p class="choice-instruction">先選立場，再想 2 個理由。</p>
     <textarea placeholder="寫下你的理由，例如：便利、安全、科技可靠性……"></textarea>
   </section>
 
@@ -168,7 +182,7 @@ summary{cursor:pointer;font-weight:600}
 
   <section class="card">
     <h2>④ 第一段骨架填空</h2>
-    <p class="en">As technology continues to develop, self-driving taxis may soon become part of our daily lives.</p>
+    <p class="en skeleton-lead">As technology continues to develop, self-driving taxis may soon become part of our daily lives.</p>
     <input type="text" placeholder="If this service became available in my city, I would...">
     <input type="text" placeholder="There are several reasons why...">
     <input type="text" placeholder="One reason is that...">
@@ -186,7 +200,7 @@ summary{cursor:pointer;font-weight:600}
 
   <section class="card">
     <h2>⑤ However 轉折練習</h2>
-    <p>哪一句最適合接在正面影響後，作為轉折？</p>
+    <p class="question-lead">哪一句最適合接在正面影響後，作為轉折？</p>
     <p class="small">點選後會看到說明；答錯也可以重新選其他答案。</p>
     <div class="quiz-wrap">
       <input type="radio" name="however" id="qA">
@@ -205,7 +219,7 @@ summary{cursor:pointer;font-weight:600}
 
   <section class="card">
     <h2>⑥ 第二段骨架</h2>
-    <p class="en">The widespread use of self-driving taxis could change the way people travel.</p>
+    <p class="en skeleton-lead">The widespread use of self-driving taxis could change the way people travel.</p>
     <textarea placeholder="正面影響：One important change is that..."></textarea>
     <textarea placeholder="轉折：However, ..."></textarea>
     <textarea placeholder="另一項影響：Another possible concern is..."></textarea>
